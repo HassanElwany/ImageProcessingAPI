@@ -1,0 +1,27 @@
+{
+  "name": "imageprocessingapi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "mon" : "nodemon src/index.ts",
+    "build": "tsc",
+    "start" : "npm run build && node resized/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HassanElwany/ImageProcessingAPI.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HassanElwany/ImageProcessingAPI/issues"
+  },
+  "homepage": "https://github.com/HassanElwany/ImageProcessingAPI#readme",
+  "dependencies": {
+    "nodemon": "^2.0.15",
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.2"
+  }
+}
