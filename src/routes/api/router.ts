@@ -1,4 +1,4 @@
-import express, {Request, Response} from "express";
+import express from "express";
 import fs from 'fs/promises';
 import { Stats } from 'fs';
 import path from 'path'
@@ -8,7 +8,7 @@ import imagesProcess from "./imagesProcess";
 const router = express.Router()
 
 //determine the images route by queries 
-router.get('/', async (req: Request, res: Response): Promise <void> => {
+router.get('/', async (req: express.Request, res: express.Response): Promise <void> => {
 
     // creating request query and parse it to integer
     const filename = req.query['filename'];
