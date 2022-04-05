@@ -1,17 +1,16 @@
-import express, { Application, Request, Response } from 'express'
-import morgan from 'morgan'
+import express, { Request, Response } from 'express'
+import routes from './routes'
 
 const PORT = process.env.PORT || 3000
 // create an instance server
-const app: Application = express()
-// HTTP request logger middleware
-app.use(morgan('short'))
+const app = express()
 
 // add routing for / path
-app.get('/', (req: Request, res: Response) => {
-  res.json({
-    message: 'Hello World 🌍'
-  })
+
+app.use('/api', routes)
+
+app.get('/', (req: Request, res: Response): void => {
+  res.status(200).send('resize images application')
 })
 
 // start express server
