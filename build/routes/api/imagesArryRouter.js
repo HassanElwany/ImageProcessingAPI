@@ -67,22 +67,28 @@ var path_1 = __importDefault(require("path"));
 var fs_1 = __importStar(require("fs"));
 var resizFunctionalty_1 = __importDefault(require("../../utilities/resizFunctionalty"));
 var imagesArryRouter = express_1.default.Router();
+//  /api/image  + /
 imagesArryRouter.get('/', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var filename, width, height, inputImages, outputImages, error_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 filename = req.query.filename;
-                width = parseInt(req.query['width'], 10);
-                height = parseInt(req.query['height'], 10);
-                inputImages = path_1.default.join(__dirname, "../../../images/full/".concat(filename));
-                outputImages = path_1.default.join(__dirname, "../../../images/thumb", "".concat(filename, "_").concat(width, "_").concat(height));
+                width = Number(req.query['width']);
+                height = Number(req.query['height']);
+                inputImages = path_1.default.join(__dirname, "../../../assets/full/".concat(filename, ".jpg"));
+                outputImages = path_1.default.join(__dirname, "../../../assets/thumb", "".concat(filename, "_").concat(width, "_").concat(height, ".jpg"));
                 // validate params inputs
                 if (!filename || !width || !height) {
                     res.status(400).send("Params must be provided as valid inputs please");
+                    return [2 /*return*/];
                 }
-                else if (width <= 0 || height <= 0) {
+                if (width <= 0 || height <= 0) {
                     console.log("please height an width must be provided as a positive number");
+                    res
+                        .status(400)
+                        .send("please height an width must be provided as a positive number must be provided as valid inputs se");
+                    return [2 /*return*/];
                 }
                 // validate the dir of image
                 try {
@@ -95,6 +101,7 @@ imagesArryRouter.get('/', function (req, res) { return __awaiter(void 0, void 0,
                     }
                 }
                 if (!(0, fs_1.existsSync)(outputImages)) return [3 /*break*/, 1];
+                console.log('Cashed');
                 res.sendFile(outputImages);
                 return [3 /*break*/, 4];
             case 1:
